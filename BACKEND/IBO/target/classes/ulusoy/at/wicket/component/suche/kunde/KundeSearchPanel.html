@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:panel>
+
+
+
+
+		<form wicket:id="form" style="display: inline;"
+			class="form-horizontal">
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-2">Vorname</label>
+					<div class="col-md-10">
+						<input type="text" wicket:id="vorname"
+							wicket:message="placeholder:kundeName">
+					</div>
+				</div>
+				<div class="form-group">
+				<label class="col-md-2">Nachname</label>
+				
+					<div class="col-md-10">
+						<input type="text" wicket:id="nachname"
+							wicket:message="placeholder:kundeNachname">
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2">Firmen-Name</label>
+					<div class="col-md-10">
+						<input type="text" wicket:id="firmaname"
+							wicket:message="placeholder:kundeFirmaname">
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-group">
+				<button type="submit" wicket:id="sucheKunde" class="btn btn-primary" data-ajax="false">Suche Kunde</button>
+			</div>
+		</form>
+	</wicket:panel>
+
+
+
+
+</body>
+</html>

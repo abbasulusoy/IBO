@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+
+		<section data-type="horizontal" data-role="controlgroup"
+			data-theme="b">
+
+			<a href="#" wicket:id="bestellungenListeLink" rel="external"
+				data-ajax="false" data-role="button">Bestellungen Liste</a> <a
+				href="#" wicket:id="newBestellungLink" rel="external"
+				data-ajax="false" data-role="button">Neue Bestellung</a> <a href="#"
+				wicket:id="einkaufsListeLink" rel="external" data-ajax="false"
+				data-role="button">Einkauf Liste</a>
+
+		</section>
+
+		<section id="feedbackPanel" wicket:id="feedbackPanel"></section>
+		<section id="filters">
+
+			<section id="filter_content">
+				<span wicket:id="bestellungSearchPanel"></span>
+			</section>
+		</section>
+		<section class="clearer"></section>
+
+		<div class="table-responsive">
+			<table wicket:id="bestellungen" class="table table-condensed"></table>
+		</div>
+
+
+
+	</wicket:extend>
+</body>
+</html>

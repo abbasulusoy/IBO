@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+
+	<wicket:panel>
+	 	
+	 	<section class="feedback" wicket:id="feeddbackPanel"></section>
+	 	<form class="tabellenForm" wicket:id="bestellteArtikelForm">
+	 	
+	 	
+	 	
+	
+	 
+	 	<br/>
+	 	<label class="tableHeader">Menge</label>
+	 	<input type="text" wicket:id="menge"/>
+	 	<br/>
+	 	<label class="tableHeader">Art</label>
+	 	<select  type="text"  wicket:id="art" ></select>
+	 	
+	 	<br/>
+	 	<label class="tableHeader">Name</label>
+	 	<input type="text" wicket:id="name" id="bestelleArtikelName"/>
+	 	<br/>
+	 	<label class="tableHeader">Preis</label>
+	 	<input type="text" wicket:id="preis"/>
+	 	<br/>
+	 	<input type="submit" wicket:id="speichern" class="submit120" value="bestellen"/>
+	 	</form>
+	 
+	</wicket:panel>	
+
+	</body>
+</html>

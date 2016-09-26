@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+
+		<section data-type="horizontal" data-role="controlgroup"
+			data-theme="b">
+
+
+			<a href="#" wicket:id="newBestellungLink" rel="external"
+				data-ajax="false" data-role="button"><img
+				wicket:id="bestellungImage" width="64" height="64"
+				alt="Neue Bestellung" /></a> <a href="#" wicket:id="einkaufsListeLink"
+				rel="external" data-ajax="false" data-role="button"><img
+				wicket:id="einkaufsImage" width="64" height="64" alt="Einkaufsliste" /></a>
+
+		</section>
+
+		<section id="feedbackPanel" wicket:id="feedbackPanel"></section>
+		<section id="filters">
+			<section id="filter_funct">
+
+				<section class="minus" id="filterswitch" onclick="showfilter();">
+					<img wicket:id="space" width="32" height="32"
+						alt="Suchen Schließen" />
+				</section>
+			</section>
+			<section id="filter_content">
+
+				<span wicket:id="bestellungSearchPanel"></span>
+			</section>
+		</section>
+		<section class="clearer"></section>
+
+
+		<div class="table-responsive">
+
+			<table wicket:id="bestellungen" class="table table-condensed"></table>
+
+		</div>
+
+
+
+	</wicket:extend>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+	<div id="filters">
+		
+		<div id="filter_content">
+			<span wicket:id="einkaufsSearchPanel" />
+		</div>
+	</div>
+		
+	<table cellspacing="0" cellpadding="0" class="filelist"
+		wicket:id="artikels">
+		
+	</table>
+		<a href="downloadEinkaufliste" wicket:id="downloadLink" rel="external"  data-ajax="false">Download</a>
+	</wicket:extend>
+</body>
+</html>

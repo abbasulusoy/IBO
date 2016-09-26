@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:panel>
+		<form wicket:id="form" style="display: inline;"
+			class="form-horizontal">
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-2" for="createdVon">Bestellt von</label>
+					<div class="col-md-10">
+						<span wicket:id="createdVon"></span>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="createdBis">Bestellt bis </label>
+					<div class="col-md-10">
+						<span wicket:id="createdBis"></span>
+					</div>
+				</div>
+			</fieldset>
+
+			<button  type="submit" wicket:id="sucheEinkaufsliste"
+				wicket:message="value:suche"  data-ajax="false"
+				data-role="button" data-theme="b" class="btn btn-primary" >
+				<wicket:message key="btn.suche"></wicket:message>
+				</button>
+				
+		</form>
+	</wicket:panel>
+
+
+
+
+</body>
+</html>

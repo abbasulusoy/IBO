@@ -1,0 +1,10 @@
+package ulusoy.at.wicket.css;
+
+public class CSS {
+
+	public static final  String STYLE="style.css";
+	public static final  String Mobile="jquery.mobile-1.3.0.css";
+	public static final String jqueryUIAutoComplete="jquery-ui.css";
+
+
+}

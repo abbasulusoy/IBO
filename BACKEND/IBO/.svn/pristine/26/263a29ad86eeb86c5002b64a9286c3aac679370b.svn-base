@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+	<wicket:panel>
+		
+		<a wicket:id="editLink" rel="external"  data-ajax="false"><img wicket:id="editImage" width="32" height="32" alt="edit"/></a>
+		<a wicket:id="deleteLink" rel="external"  data-ajax="false"><img wicket:id="deleteImage" width="32" height="32" alt="delete"/></a>
+		
+	</wicket:panel>
+</body>
+</html>

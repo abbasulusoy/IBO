@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+		<h1>User Registration</h1>
+		<section wicket:id="feedback"></section>
+		<form wicket:id="accountForm">
+		
+			<p><label><wicket:message key="account.usernameLabel"></wicket:message></label> <input  class="col-md-4" type="text" wicket:id="username"/>	</p>
+			<p><label><wicket:message key="account.passwordLabel"></wicket:message></label><input  class="col-md-4" type="text" wicket:id="password"/>	</p>
+			<p><label><wicket:message key="account.passwordWhLabel"></wicket:message></label><input  class="col-md-4" type="text" wicket:id="passwordWh"/>	</p>
+			<br /> 
+			
+		<div wicket:id="rollen"/>
+				
+			<p><input  class="col-md-4" type="submit" wicket:id="speichern" wicket:message="value:account.save" > &nbsp;<input  class="col-md-4" type="submit" wicket:id="abbrechen" wicket:message="value:account.reset"></p>
+		
+		</form>
+	</wicket:extend>
+</body>
+</html>

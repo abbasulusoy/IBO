@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+	<h6>Bitte den Datum eingeben, inzwischen bestellt worden ist</h6>
+	<div id="filters">
+		
+		<div id="filter_content">
+			<span wicket:id="einkaufsSearchPanel"></span>
+		</div>
+	</div>
+	<h3>Einkaufsliste</h3>
+	<div class="table-responsive">
+			<table wicket:id="artikels" class="table table-condensed"></table>
+	</div>
+	
+  <button  class="btn btn-primary" wicket:id="downloadLink" data-ajax="false">Download</button>
+	</wicket:extend>
+</body>
+</html>

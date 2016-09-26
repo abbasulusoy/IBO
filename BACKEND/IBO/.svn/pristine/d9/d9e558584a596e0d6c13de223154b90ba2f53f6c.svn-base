@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:panel>
+	
+	
+	<form wicket:id="form" style="display: inline;">
+	<fieldset>
+		<label class="tableHeader" >Nr</label>
+		<div class="empty">&nbsp;</div>
+		<input type="text" wicket:id="id" />
+		<br/>
+		<label class="tableHeader" >Kunde</label>
+		<div class="empty">&nbsp;</div>
+		<select type="text" wicket:id="kundenAuswahl"></select>
+		<br/>
+		<label class="tableHeader" for="createdVon" >Bestellt von</label>
+		<div class="empty">&nbsp;</div>
+		<span wicket:id="createdVon" class="select_100"></span>
+		<br/>
+		<label class="tableHeader" for="createdBis" >Bestellt bis</label>
+		<div class="empty">&nbsp;</div>
+		<span wicket:id="createdBis" class="select_100"></span>
+		<br/>
+		<label class="tableHeader" for="mehrwertSteuer" >Steuer</label>
+		<span wicket:id="mehrwertSteuer"></span>
+		
+	</fieldset>
+	<br/><br/>
+	<input type="submit" wicket:id="sucheBestellung" class="btn_150" wicket:message="value:suche" rel="external"  data-ajax="false" data-role="button" data-theme="b"/>
+	</form>
+	</wicket:panel>
+	
+	
+	
+	
+	</body>
+</html>

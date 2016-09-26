@@ -1,0 +1,114 @@
+package ulusoy.at.wicket.service.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.inject.Named;
+
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang.StringUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
+
+import ulusoy.at.wicket.ApplicationException;
+import ulusoy.at.wicket.dao.IKundeDAO;
+import ulusoy.at.wicket.entity.Kunde;
+import ulusoy.at.wicket.service.IKundeService;
+
+@Named
+public class KundeServiceImpl implements IKundeService{
+
+	@Inject
+	private  IKundeDAO  kundeDao;
+
+
+	public IKundeDAO getKundeDao() {
+		return kundeDao;
+	}
+
+	public void setKundeDao(IKundeDAO kundeDao) {
+		this.kundeDao = kundeDao;
+	}
+
+	@Override
+	public void save(Kunde kunde)  throws ApplicationException{
+		kundeDao.save(kunde);
+	}
+
+	@Override
+	public void deleteWithId(Long id) {
+		kundeDao.delete(id);
+	}
+
+	@Override
+	public List<Kunde> getAllKunde() {
+
+		return kundeDao.findAll();
+	}
+
+	@Override
+	public void saveAndFlush(Kunde kunde) {
+		kundeDao.saveAndFlush(kunde);
+
+	}
+
+	@Override
+	public void deleteObjekt(Kunde kunde) {
+		kundeDao.delete(kunde);
+
+	}
+
+	@Override
+	public List<Kunde> searchName(String name) {
+		return kundeDao.findByKundeName(name);
+
+	}
+
+	@Override
+	public Kunde findById(Long id) {
+
+		return kundeDao.findOne(id);
+	}
+
+	@Override
+	public Kunde findByKundeFirmaname(String firmaName) {
+		try {
+			return kundeDao.findByKundeFirmanameOrderByKundeNameAsc(firmaName);
+		}
+		catch(final Exception e)
+		{
+			return null;
+		}
+
+	}
+
+	@Override
+	public Page<Kunde> search(String firmaname, String vorname, String nachname,
+			Integer pageNum, Integer pageSize) {
+		final PageRequest pr=new PageRequest(pageNum, pageSize,new Sort(Direction.ASC,"kundeNachname"));
+		if(StringUtils.isNotBlank(firmaname))
+		{
+			final List<Kunde> kundenListe=new ArrayList<Kunde>();
+			CollectionUtils.addIgnoreNull(kundenListe, findByKundeFirmaname(firmaname));
+			return new PageImpl<Kunde>(kundenListe);
+		}
+		if(StringUtils.isBlank(nachname))
+		{
+			return this.kundeDao.findAll(pr);
+		}
+		if(StringUtils.isBlank(vorname))
+		{
+			return this.kundeDao.findByKundeNachnameStartsWithIgnoreCaseOrderByKundeNameAsc(nachname,pr);
+		}
+		return this.kundeDao.findByKundeNameStartsWithIgnoreCaseAndKundeNachnameStartsWithIgnoreCaseOrderByKundeNameAsc(vorname, nachname, pr);
+	}
+
+
+
+
+
+}

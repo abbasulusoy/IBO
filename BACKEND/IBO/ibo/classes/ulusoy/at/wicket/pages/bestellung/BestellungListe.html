@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+		<form wicket:id="bestellungForm">
+	<table>
+				<thead>
+					<tr>
+						
+						<th><wicket:message key="bestellung.id"></wicket:message></th>
+						<th><wicket:message key="bestellung.created"></wicket:message></th>
+						<th><wicket:message key="bestellung.kunde"></wicket:message></th>
+						<th><wicket:message key="bestellung.kunde.firma"></wicket:message></th>
+						
+						<th><wicket:message key="bestellung.summe"></wicket:message></th>
+						<th><wicket:message key="bestellung.steuer"></wicket:message></th>
+						<th><wicket:message key="bestellung.gesamt"></wicket:message></th>
+						<th><wicket:message key="common.edit"></wicket:message></th>
+						<th><wicket:message key="common.delete"></wicket:message></th>
+						
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="bestellungen">
+						<td wicket:id="id"></td>
+						<td wicket:id="created"></td>
+						<td wicket:id="kunde.fullname"></td>
+						<td wicket:id="kunde.kundeFirmaname"></td>
+						
+						<td wicket:id="total"></td>
+						<td wicket:id="mehrwertSteuer10"></td>
+						<td wicket:id="mehrwertSteuerTotal"></td>
+						 
+						<td><a href="#" wicket:id="edit"><wicket:message key="common.edit"></wicket:message></a> </td>
+						<td><a href="#" wicket:id="delete"><wicket:message key="common.delete"></wicket:message></a> </td>
+						
+					</tr>
+				</tbody>
+			</table>
+			</form>
+	</wicket:extend>	
+	</body>
+</html>

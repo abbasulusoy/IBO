@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+	
+	<span wicket:id="feedback"></span>
+	
+	<form wicket:id="accountForm">
+	<input type="checkbox" wicket:id="enabled">User Free</input>
+	<input wicket:id="username" type="text"></input>
+	<input wicket:id="password" type="text"></input>
+	<input wicket:id="passwordWh" type="text"></input>
+	<input type="submit" value="ok">
+	</form>
+	
+	</wicket:extend>	
+	</body>
+</html>

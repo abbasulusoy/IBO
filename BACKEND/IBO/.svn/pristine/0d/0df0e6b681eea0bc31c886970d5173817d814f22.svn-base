@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+	<span wicket:id="userfullname"></span>
+	<span wicket:id="role"></span>
+	
+	<section data-role="content">
+			<section data-role="collapsible-set">
+				<section data-role="collapsible">
+					<h3>Unternehmen</h3>
+	Obst und Gem&uuml;se ist gesund, es wird geraten frische Fr&uuml;chte und knackiges Gem&uuml;se f&uuml;nf Mal t&auml;glich zu essen
+	Wir sind bereit Ihnen gratis zu stellen. Wir liefern seit 1999 in Wien.
+	Wir liefern, Sie leben gesund.
+	</section>
+	</section>
+	</section>
+	<section data-role="content">
+			<section data-role="collapsible-set">
+				<section data-role="collapsible">
+				
+					<h3>Kontakt</h3>
+		<b>&Ouml;zy&uuml;rek KG,<br /> <a class="u-link"
+			href="tel:+43699 1978 10 05">0699 1978 10 05</a> oder <a
+			href="tel:+436503078436" class="u-link">650 307 84 36</a>,
+			<br/>
+			Schl&ouml;glgasse 2 1120 Wien
+		</b>
+	</section>
+	</section>
+	</section>
+		<section data-role="content">
+			<section data-role="collapsible-set">
+				<section data-role="collapsible">
+					<h3>Bilder</h3>
+					<img wicket:id="image1" />
+					<img wicket:id="image2" /> 
+					<img wicket:id="image3" />
+					<img wicket:id="image4" />
+					<img wicket:id="image5" />
+					<img wicket:id="image6" />
+				</section>
+			</section>
+		</section>
+
+
+
+	</wicket:extend>
+
+</body>
+</html>

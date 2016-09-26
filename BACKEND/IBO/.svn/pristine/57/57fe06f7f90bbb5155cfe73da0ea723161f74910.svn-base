@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+
+      
+</head>
+
+<body>
+<script type="text/javascript" wicket:id="produktName">
+</script>
+	<wicket:extend>
+		<form wicket:id="editProduktForm" >
+			<section wicket:id="feedback"></section>		
+			<legend>
+				<wicket:message key="legend.produkt.formular"></wicket:message>
+			</legend>
+
+
+			<label class="label_100" for="produktNummer" >Produkt-Nr</label>
+			<br/>
+			<input type="text" wicket:id="nummer"></input> 
+			<br/>
+			<label class="label_100" for="name" >Produkt-Name</label>
+			<br/>
+			<input type="text" wicket:id="name" id="produktName"></input> 
+			<br/>
+			<label class="label_100" for="preis">Produkt-Preis</label>
+			<br/>
+			<input type="text" wicket:id="preis"></input> 
+			<br/>
+			<label class="label_100" for="art">Produkt-Art</label>
+			<br/>
+			<select type="text" wicket:id="art"></select> 
+			<br/>
+			<label class="label_100" for="beschreibung">Produkt-Beschreibung</label>
+			<br/>
+			<input type="text" wicket:id="beschreibung"></input> 
+			<br/>
+			<label class="label_100" for="land">Produkt-Land</label>
+			<br/>
+			<select type="text" wicket:id="land"></select> 
+		<br/>
+			<label class="label_100" for="kommentar">Produkt-Kommentar</label>
+			<br/>
+			<textarea type="text" wicket:id="kommentar"></textarea> 
+			<br/>
+ 			<input type="submit" class="submit120" wicket:id="speichernButton" value="Speichern" data-role="button" data-theme="b">
+ 			<input type="submit" class="submit120" wicket:id="abbrechenButton" value="Abbrechen" data-role="button" data-theme="b">
+		</form>
+	</wicket:extend>
+</body>
+</html>

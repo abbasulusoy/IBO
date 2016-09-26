@@ -1,0 +1,43 @@
+package ulusoy.at.wicket.pages.kunde;
+
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+
+import ulusoy.at.wicket.component.suche.kunde.KundeSucheListPage;
+import ulusoy.at.wicket.entity.Kunde;
+import ulusoy.at.wicket.entity.model.KundeModel;
+import ulusoy.at.wicket.panel.KundeFormPanel;
+import ulusoy.at.wicket.template.Template;
+
+public class EditKundePage extends Template {
+	private static final long serialVersionUID = 1L;
+	public static final String PARAM_KUNDE_ID = "kundeId";
+
+
+
+	public EditKundePage(final PageParameters parameters) {
+
+		final org.apache.wicket.util.string.StringValue customerId = parameters.get(PARAM_KUNDE_ID);
+		final IModel<Kunde> customerModel = customerId.isEmpty() ? Model.of(new Kunde()) : new KundeModel(
+				customerId.toLongObject());
+		add(new KundeFormPanel("kundeFormular",customerModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public void onSubmit(IModel<Kunde> model)
+		   {
+					super.onSubmit(model);
+					setResponsePage(KundeSucheListPage.class);
+			}
+
+			@Override
+			public void onCancel() {
+				super.onCancel();
+				setResponsePage(EditKundePage.class);
+			}
+		});
+	}
+
+}

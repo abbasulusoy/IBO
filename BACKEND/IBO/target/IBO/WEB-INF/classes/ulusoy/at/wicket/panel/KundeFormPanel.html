@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<body>
+	<wicket:extend>
+
+		
+		<span wicket:id="errorPanel"> <wicket:message
+				key="kunde.angelegt" /> <a wicket:id="load"><wicket:message
+					key="message.yes"></wicket:message></a>
+		</span>
+	
+		<wicket:container wicket:id="kundeNameBorder">
+			<input   wicket:id="kundeName" ></input>
+		</wicket:container>
+		<wicket:container wicket:id="kundeNachnameBorder">
+			<input   wicket:id="kundeNachname" ></input>
+		</wicket:container>
+		
+		<wicket:container wicket:id="kundeEmailadresseBorder">
+			<input   wicket:id="kundeEmailadresse"  placeholder="me@gmail.com"></input>
+		</wicket:container>
+		
+		<wicket:container wicket:id="kundeAdresseBorder">
+			<input   wicket:id="kundeAdresse" ></input>
+		</wicket:container>
+		
+		<wicket:container wicket:id="kundeOrtBorder">
+			<input   wicket:id="kundeOrt" ></input>
+		</wicket:container>
+		
+		<wicket:container wicket:id="kundePLZBorder">
+			<input   wicket:id="kundePLZ" ></input>
+		</wicket:container>
+		
+		<wicket:container wicket:id="kundeTelnummerBorder">
+			<input   wicket:id="kundeTelnummer" ></input>
+		</wicket:container>
+		
+		<wicket:container wicket:id="kundeFirmanameBorder">
+			<input   wicket:id="kundeFirmaname" ></input>
+		</wicket:container>
+		
+		
+	</wicket:extend>
+</body>
+</html>

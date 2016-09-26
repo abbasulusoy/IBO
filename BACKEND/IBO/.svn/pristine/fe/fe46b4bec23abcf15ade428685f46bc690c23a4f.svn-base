@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+<wicket:panel>
+		<section id="kontaktPanel">
+		<wicket:container wicket:id="kontaktPanel"></wicket:container>
+		</section>
+		<section id="version">
+		<span wicket:id="version"></span>
+		</section>
+</wicket:panel>	
+</body>
+</html>	

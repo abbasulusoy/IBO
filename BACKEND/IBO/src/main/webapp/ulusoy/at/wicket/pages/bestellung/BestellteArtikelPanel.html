@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+
+	<wicket:panel>
+	 	
+	 	<section class="feedback" wicket:id="feeddbackPanel"></section>
+	 	<form class="tabellenForm" wicket:id="bestellteArtikelForm">
+	 	
+	 	
+	 	
+	
+	 
+	 	
+	 	<label class="col-md-4 control-label">Menge</label>
+	 	<input  class="col-md-4"  type="text" wicket:id="menge"/>
+	 	
+	 	<label class="col-md-4 control-label">Art</label>
+	 	<select   wicket:id="art" ></select>
+	 	
+	 	
+	 	<label class="col-md-4 control-label">Name</label>
+	 	<input  class="col-md-4" type="text" wicket:id="name" id="bestelleArtikelName"/>
+	 	
+	 	<label class="col-md-4 control-label">Preis</label>
+	 	<input  class="col-md-4" type="text" wicket:id="preis"/>
+	 	
+	 	<button wicket:id="speichern"  value="bestellen" class="btn btn-primary" ></button>
+	 	</form>
+	 
+	</wicket:panel>	
+
+	</body>
+</html>

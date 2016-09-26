@@ -1,0 +1,11 @@
+jdbc.driverClassName=org.postgresql.Driver
+jdbc.url=jdbc\:postgresql\://localhost\:5432/ibo
+jdbc.username=postgres
+jdbc.password=admin
+#
+# PostgreSQL dialect
+#
+hibernate.dialect=org.hibernate.dialect.PostgreSQL82Dialect
+hibernate.query.substitutions=true TRUE, false FALSE
+
+hibernate.search.indexBase=/temp/waff/index

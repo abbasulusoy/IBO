@@ -1,0 +1,1 @@
+var availableProdukte= ["Banane","Gurken"];

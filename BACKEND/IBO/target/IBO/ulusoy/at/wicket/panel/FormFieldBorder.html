@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+<wicket:border>
+	<wicket:container wicket:id="borderContainer">
+		<label class="label_100" for="anrede" wicket:id="label">Anrede</label>
+		<div class="duty"><wicket:container wicket:id="duty">*</wicket:container></div>
+		<div wicket:id="empty" class="empty">&nbsp;</div>
+		<div wicket:id="info" class="info" onmouseover="showinfo(1)"
+			onmouseout="hideinfo(1);">
+			<img height="20" width="20" alt="Icon Information"
+				src="img/space.png" />
+			<div class="info_fenster" style="display: none" id="info_1">
+				<div class="info_txt">
+					<strong>Information:</strong> Informationtext<br /> <strong>Information:</strong>
+					Informationtext<br /> <strong>Information:</strong>
+					Informationtext<br /> <strong>Information:</strong>
+					Informationtext<br /> <strong>Information:</strong>
+					Informationtext<br />
+				</div>
+			</div>
+		</div>
+		<wicket:body/>
+	</wicket:container>
+</wicket:border>
+</body>
+</html>

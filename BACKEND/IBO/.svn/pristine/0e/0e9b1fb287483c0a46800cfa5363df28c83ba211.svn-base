@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+	<a href="#" wicket:id="newKundeLink">Neu Kunde Anlegen</a>
+	<div id="feedbackPanel" wicket:id="feedbackPanel" ></div>
+	<div id="filters">
+		
+		<div id="filter_content">
+			<span wicket:id="kundenSearchPanel" />
+		</div>
+	</div>
+	<div class="clearer"></div>
+	<table cellspacing="0" cellpadding="0" class="filelist"
+		wicket:id="kunden">
+	</table>
+	
+	
+	</wicket:extend>	
+	</body>
+</html>

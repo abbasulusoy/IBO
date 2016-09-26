@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<wicket:panel>
+	<section id="warenkorb">
+		<h3>Warenkorb</h3>
+		<div class="table-responsive">
+			<table class="table table-condensed">
+
+				<thead>
+					<tr>
+						<th class="col-md-2">Name</th>
+						<th class="col-md-2">Preis</th>
+						<th class="col-md-2">Menge</th>
+						<th class="col-md-2">Art</th>
+						<th class="col-md-2">Summe</th>
+						<th class="col-md-1">L&ouml;schen</th>
+						<th class="col-md-1">Ändern</th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr wicket:id="artikel">
+
+						<td class="col-md-2" wicket:id="name"></td>
+						<td class="col-md-2" wicket:id="preis"></td>
+						<td class="col-md-2" wicket:id="menge"></td>
+						<td class="col-md-2" wicket:id="art"></td>
+						<td class="col-md-2" wicket:id="summe"></td>
+						<td class="col-md-1"><a href="#" wicket:id="delete">Löschen</a></td>
+						<td class="col-md-1"><a href="#" wicket:id="edit">Ändern</a></td>
+
+
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+			<form wicket:id="summeForm">
+				<input  class="col-md-4" type="submit" wicket:id="Rechnen" value="Rechnen"></input>
+
+			</form>
+
+			Gesammt: <span wicket:id="gesammt"></span> Euro
+	</section>
+</wicket:panel>
+</html>

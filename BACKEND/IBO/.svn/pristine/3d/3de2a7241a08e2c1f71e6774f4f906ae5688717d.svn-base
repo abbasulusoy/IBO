@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+	
+	<section class="login-form">
+<h2>Login</h2>
+<p>Sie haben die Daten einzuloggen:</p>
+<ul>
+	<li class="loginInfo">Username</li>
+	<li class="loginInfo">Password</li>
+	
+</ul>
+
+	
+	
+	
+	<section id="feedback" wicket:id="feedbackPanel"></section>
+	<form id="loginForm" wicket:id="loginForm">
+	<label class="label_100"  for="username">Username</label>
+	<section class="duty"></section>
+	<section class="empty" > </section>
+	
+	<input type="text" wicket:id="username"></input>
+	<br/>
+	
+	<label class="label_100"  for="password">Password</label>
+	<section class="duty"></section>
+	<section class="empty" > </section>
+	<input type="text" wicket:id="password"></input>
+	<br/>
+	<input type="submit" wicket:id="loginButton" value="Login">
+	
+	
+	
+	</form>
+	<a href="" wicket:id="neueAnmeldung">Neue Anmeldung</a>
+</section>	
+<section class="login_form_footer"></section>	
+
+</wicket:extend>	
+	</body>
+</html>

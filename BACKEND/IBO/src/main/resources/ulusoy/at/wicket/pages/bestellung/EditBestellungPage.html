@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+	
+	 <h4><wicket:message key="legend.bestellung.formular"></wicket:message></h4>
+	<section wicket:id="feeddbackPanel"></section>
+	<form wicket:id="bestellungForm" class="form-horizontal">
+	<div class="form-group">
+		<label class="col-md-2">Nr</label>
+		<div class="col-md-10"> 
+			<input type="text" wicket:id="id"></input>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-md-2">Steuer</label>
+		<div class="col-md-10"> 
+			<span wicket:id="mehrwertSteuer"></span>
+		</div>
+	</div>
+	<div class="form-group">
+	<label class="col-md-2">Kunde</label>
+	<div class="col-md-10"> 
+		<select  wicket:id="kundenAuswahl"></select>
+	</div>
+	</div>
+	<div class="form-group">
+	<button  class="btn btn-primary" type="submit" wicket:id="bestellen"  > bestellung beginnen</button>
+	<button class="btn btn-primary"  type="submit" wicket:id="bestellenAendern" >bestellung &auml;ndern</button>
+	</div>
+		
+	</form>
+	<hr/>
+	<span wicket:id="artikelAdded"></span>
+	
+	
+	<hr/>
+	<span wicket:id="warenkorb"></span> 
+	<button class="btn btn-primary"  wicket:id="downloadLink"  data-ajax="false" data-role="button" data-theme="b">Download</button>
+	
+	
+	</wicket:extend>	
+	</body>
+</html>

@@ -1,0 +1,90 @@
+package ulusoy.at.wicket.panel;
+
+
+import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.SubmitLink;
+import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.StringResourceModel;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import ulusoy.at.wicket.ApplicationException;
+import ulusoy.at.wicket.entity.Kunde;
+import ulusoy.at.wicket.service.IKundeService;
+import ulusoy.at.wicket.validation.MaximumStringLengthValidator;
+
+
+public class KundeFormPanel extends FormPanel<Kunde>{
+
+	private static final long serialVersionUID = 1L;
+
+	@SpringBean
+	private IKundeService kundenService;
+
+	private Boolean loadExistingEnabled = Boolean.FALSE;
+
+
+	public KundeFormPanel(final String id) {
+		this(id, Model.<Kunde> of(new Kunde()));
+	}
+
+
+	public KundeFormPanel(final String id, final IModel<Kunde> kundeModel) {
+		super(id, kundeModel, new StringResourceModel("save", (IModel<?>) null, (Object[]) null));
+		final TextField<String> kundePLZ=new TextField<>("kundePLZ");
+		kundePLZ.add(new MaximumStringLengthValidator(4));
+		addWithFormBorder("kundeNameBorder", "kundeName", new TextField<>("kundeName").setRequired(true), 40);
+		addWithFormBorder("kundeNachnameBorder", "kundeNachname", new TextField<>("kundeNachname").setRequired(true), 40);
+		TextField<Object> telefonnummer= new TextField<>("kundeTelnummer");
+		addWithFormBorder("kundeAdresseBorder", "kundeAdresse", new TextField<>("kundeAdresse").setRequired(true), 240);
+		addWithFormBorder("kundeTelnummerBorder", "kundeTelnummer",telefonnummer.setRequired(true), 40);
+		addWithFormBorder("kundeFirmanameBorder", "kundeFirmaname", new TextField<>("kundeFirmaname").setRequired(true), 40);
+		addWithFormBorder("kundeOrtBorder", "kundeOrt", new TextField<>("kundeOrt").setRequired(true), 40);
+		addWithFormBorder("kundePLZBorder", "kundePLZ", kundePLZ.setRequired(true), 40);
+		addWithFormBorder("kundeEmailadresseBorder", "kundeEmailadresse", new TextField<>("kundeEmailadresse"), 40);
+
+        final WebMarkupContainer errorPanel = new WebMarkupContainer("errorPanel") {
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public boolean isVisible() {
+                return KundeFormPanel.this.loadExistingEnabled;
+            }
+        };
+
+        errorPanel.add(new SubmitLink("noLoad") {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public void onSubmit() {
+
+                KundeFormPanel.this.loadExistingEnabled = Boolean.FALSE;
+            }
+        });
+
+
+        add(errorPanel);
+	}
+
+	@Override
+	public void onSubmit(final IModel<Kunde> model)
+	{
+		try {
+			KundeFormPanel.this.kundenService.save(model.getObject());
+		} catch (ApplicationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	public void setKundenService(final IKundeService kundenService) {
+		this.kundenService = kundenService;
+	}
+
+
+
+
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:panel>
+	
+	
+	<form wicket:id="form" style="display: inline;">
+	<fieldset>
+		<label class="col-md-4 control-label" >ProduktName</label>
+		<input  class="col-md-4" type="text" wicket:id="name" wicket:message="placeholder:produkt.name" >
+		
+		<label class="col-md-4 control-label" >Produkt-Preis Liegt Zwischen </label>
+		<input  class="col-md-4" type="text" wicket:id="preis" wicket:message="placeholder:produkt.preis" >
+		<input  class="col-md-4" type="text" wicket:id="preis2" wicket:message="placeholder:produkt.preis" >
+		
+		<label class="col-md-4 control-label" >Produkt-Art</label>
+		<select type="text" wicket:id="art" class="col-md-4"></select>
+	</fieldset>
+	
+	<input  class="col-md-4" type="submit" wicket:id="sucheProdukt" wicket:message="value:suche"/>
+	</form>
+	</wicket:panel>
+	
+	
+	
+	
+	</body>
+</html>

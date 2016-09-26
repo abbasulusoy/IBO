@@ -1,0 +1,329 @@
+package ulusoy.at.wicket.pages.bestellung;
+
+
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import javax.inject.Inject;
+
+import org.apache.wicket.markup.html.form.Button;
+import org.apache.wicket.markup.html.form.DropDownChoice;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.IChoiceRenderer;
+import org.apache.wicket.markup.html.form.RequiredTextField;
+import org.apache.wicket.markup.html.link.DownloadLink;
+import org.apache.wicket.markup.html.panel.FeedbackPanel;
+import org.apache.wicket.model.AbstractReadOnlyModel;
+import org.apache.wicket.model.CompoundPropertyModel;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import com.googlecode.wicket.jquery.ui.form.RadioChoice;
+
+import ulusoy.at.wicket.ApplicationException;
+import ulusoy.at.wicket.entity.BestellteArtikel;
+import ulusoy.at.wicket.entity.Bestellung;
+import ulusoy.at.wicket.entity.Kunde;
+import ulusoy.at.wicket.entity.model.AvailableKundeModel;
+import ulusoy.at.wicket.entity.model.BestellungModel;
+import ulusoy.at.wicket.entity.model.KundeModel;
+import ulusoy.at.wicket.service.DocumentService;
+import ulusoy.at.wicket.service.IBestellungService;
+import ulusoy.at.wicket.service.IKundeService;
+import ulusoy.at.wicket.template.Template;
+
+public class EditBestellungPage extends Template {
+
+	private static final long serialVersionUID = 1L;
+
+	private Model<Bestellung> bestellungModel;
+
+	@SpringBean
+	private IBestellungService bestellungService;
+
+	@Inject
+	private DocumentService documentService;
+
+	public static final String  PARAM_BESTELLUNG_ID="bestellungId";
+
+	private List<BestellteArtikel> artikelsListe=new ArrayList<>();
+	private static final List<String> mehrwertSteuerListe=Arrays.asList("10%","keine");
+
+	public EditBestellungPage(final PageParameters parameters) {
+
+		final org.apache.wicket.util.string.StringValue bestellungId = parameters.get(PARAM_BESTELLUNG_ID);
+		final IModel<Bestellung> bestellungModel = bestellungId.isEmpty() ? Model.of(new Bestellung()) : new BestellungModel(
+				bestellungId.toLongObject());
+		initPage(bestellungModel);
+	}
+
+	public EditBestellungPage()
+	{
+		initPage( Model.of(new Bestellung()));
+	}
+	public EditBestellungPage(final IModel<Bestellung> bestellungModel)
+	{
+		initPage(bestellungModel);
+	}
+	public void initPage(final IModel<Bestellung> bestellungModel)
+	{
+		final FeedbackPanel feedbackPanel=new FeedbackPanel("feeddbackPanel");
+		final Form<Bestellung> bestellungForm = new Form<>("bestellungForm", new CompoundPropertyModel<>(
+				bestellungModel)
+				);
+		bestellungForm.add(new RequiredTextField<>("id").setEnabled(false));
+		bestellungForm.add(new RadioChoice<String>("mehrwertSteuer",new PropertyModel<String>(bestellungModel, "mehrwertSteuer"),mehrwertSteuerListe));
+
+		final DropDownChoice<Kunde> kundeChoice = new DropDownChoice<Kunde>("kundenAuswahl", new PropertyModel<Kunde>(bestellungModel,"kunde"), new AvailableKundeModel(), new IChoiceRenderer<Kunde>() {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public Object getDisplayValue(final Kunde object) {
+                return object.getFullName() + " Firma: "+object.getKundeFirmaname();
+            };
+
+            @Override
+            public String getIdValue(Kunde object, int index) {
+
+            	return object.getId()+"";
+            }
+        });
+
+        kundeChoice.setRequired(true);
+        bestellungForm.add(kundeChoice);
+
+
+		bestellungForm.add(new Button("bestellen")
+		{
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onSubmit() {
+				super.onSubmit();
+				try {
+					bestellungModel.getObject().setProdukte(artikelsListe);
+					bestellungService.save(bestellungModel.getObject());
+				} catch (ApplicationException e) {
+
+					e.printStackTrace();
+				}
+
+			}
+			@Override
+			public boolean isVisible() {
+
+				return !bestellungService.exitst(bestellungModel.getObject());
+			}
+
+		});
+
+		bestellungForm.add(new Button("bestellenAendern")
+		{
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onSubmit() {
+				super.onSubmit();
+				try {
+					bestellungModel.getObject().setProdukte(artikelsListe);
+					bestellungService.save(bestellungModel.getObject());
+				} catch (ApplicationException e) {
+
+					e.printStackTrace();
+				}
+
+			}
+			@Override
+			public boolean isVisible() {
+
+				return bestellungService.exitst(bestellungModel.getObject());
+			}
+
+		});
+
+		add(new BestellteArtikelPanel("artikelAdded",bestellungModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isVisible() {
+
+				return bestellungService.exitst(bestellungModel.getObject());
+			}
+		});
+		add(new WarenkorbPanel("warenkorb", bestellungModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isVisible() {
+
+				return bestellungService.exitst(bestellungModel.getObject());
+			}
+		}
+		);
+		 final DownloadLink downloadLink = new DownloadLink("downloadLink", new AbstractReadOnlyModel<File>() {
+	            /**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
+				@Override
+	            public File getObject() {
+
+					List<BestellteArtikel> produkte=bestellungService.getMeinBestellung(bestellungModel.getObject());
+					bestellungModel.getObject().setProdukte(produkte);
+
+	                return EditBestellungPage.this.documentService.printBestellungToDocx(bestellungModel.getObject());
+	            }
+
+	        }) {
+	            private static final long serialVersionUID = 1L;
+
+	            @Override
+	            public boolean isVisible() {
+	                return bestellungService.exitst(bestellungModel.getObject());
+	            }
+	        };
+	    add(feedbackPanel);
+	    add(downloadLink);
+
+		add(bestellungForm);
+	}
+
+	public EditBestellungPage(final IModel<Bestellung> bestellungModel,final IModel<BestellteArtikel> bestellteArtikelModel)
+	{
+
+		final FeedbackPanel feedbackPanel=new FeedbackPanel("feeddbackPanel");
+		final Form<Bestellung> bestellungForm = new Form<>("bestellungForm", new CompoundPropertyModel<>(
+				bestellungModel)
+				);
+		bestellungForm.add(new RequiredTextField<>("id").setEnabled(false));
+		bestellungForm.add(new RadioChoice<String>("mehrwertSteuer",new PropertyModel<String>(bestellungModel, "mehrwertSteuer"),mehrwertSteuerListe));
+
+		final DropDownChoice<Kunde> kundeChoice = new DropDownChoice<Kunde>("kundenAuswahl", new PropertyModel<Kunde>(bestellungModel,"kunde"), new AvailableKundeModel(), new IChoiceRenderer<Kunde>() {
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public Object getDisplayValue(final Kunde object) {
+                return object.getFullName();
+            };
+
+            @Override
+            public String getIdValue(Kunde object, int index) {
+            	return object.getId()+"";
+            }
+        });
+
+        kundeChoice.setRequired(true);
+        bestellungForm.add(kundeChoice);
+
+
+		bestellungForm.add(new Button("bestellen")
+		{
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onSubmit() {
+				super.onSubmit();
+				try {
+					bestellungModel.getObject().setProdukte(artikelsListe);
+					bestellungService.save(bestellungModel.getObject());
+				} catch (ApplicationException e) {
+
+					e.printStackTrace();
+				}
+
+			}
+			@Override
+			public boolean isVisible() {
+
+				return !bestellungService.exitst(bestellungModel.getObject());
+			}
+
+		});
+
+		bestellungForm.add(new Button("bestellenAendern")
+		{
+			private static final long serialVersionUID = 1L;
+			@Override
+			public void onSubmit() {
+				super.onSubmit();
+				try {
+					bestellungModel.getObject().setProdukte(artikelsListe);
+					bestellungService.save(bestellungModel.getObject());
+				} catch (ApplicationException e) {
+
+					e.printStackTrace();
+				}
+
+			}
+			@Override
+			public boolean isVisible() {
+
+				return bestellungService.exitst(bestellungModel.getObject());
+			}
+
+		});
+
+		add(new BestellteArtikelPanel("artikelAdded",bestellungModel,bestellteArtikelModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isVisible() {
+
+				return bestellungService.exitst(bestellungModel.getObject());
+			}
+		});
+		add(new WarenkorbPanel("warenkorb", bestellungModel)
+		{
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isVisible() {
+
+				return bestellungService.exitst(bestellungModel.getObject());
+			}
+		}
+		);
+		 final DownloadLink downloadLink = new DownloadLink("downloadLink", new AbstractReadOnlyModel<File>() {
+	            /**
+			 *
+			 */
+			private static final long serialVersionUID = 1L;
+
+				@Override
+	            public File getObject() {
+
+					List<BestellteArtikel> produkte=bestellungService.getMeinBestellung(bestellungModel.getObject());
+					bestellungModel.getObject().setProdukte(produkte);
+
+	                return EditBestellungPage.this.documentService.printBestellungToDocx(bestellungModel.getObject());
+	            }
+
+	        }) {
+	            private static final long serialVersionUID = 1L;
+
+	            @Override
+	            public boolean isVisible() {
+	                return bestellungService.exitst(bestellungModel.getObject());
+	            }
+	        };
+	    add(feedbackPanel);
+	    add(downloadLink);
+
+		add(bestellungForm);
+	}
+
+	public Model<Bestellung> getBestellungModel() {
+		return bestellungModel;
+	}
+	public void setBestellungModel(Model<Bestellung> bestellungModel) {
+		this.bestellungModel = bestellungModel;
+	}
+
+
+}

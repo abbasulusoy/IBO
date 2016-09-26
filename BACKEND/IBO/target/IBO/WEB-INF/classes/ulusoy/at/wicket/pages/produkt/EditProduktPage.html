@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<head>
+
+
+</head>
+
+<body>
+	<script type="text/javascript" wicket:id="produktName">
+		
+	</script>
+	<wicket:extend>
+			<form wicket:id="editProduktForm" class="form-horizontal">
+				<section wicket:id="feedback"></section>
+				<h4>
+					<wicket:message key="legend.produkt.formular"></wicket:message>
+				</h4>
+
+				<div class="form-group">
+					<label class="col-md-2" for="produktNummer">Produkt-Nr</label>
+					<div class="col-md-10"> 
+					<input 	 type="text" wicket:id="nummer"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="name">Produkt-Name</label>
+					<div class="col-md-10">
+					 <input  type="text" wicket:id="name" id="produktName"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="preis">Produkt-Preis</label>
+					 <div class="col-md-10">
+					 <input  type="text" wicket:id="preis"></input>
+					 </div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="art">Produkt-Art</label>
+					<div class="col-md-10">
+					<select  wicket:id="art"></select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="beschreibung">Produkt-Beschreibung</label>
+					<div class="col-md-10">
+						<input  type="text" wicket:id="beschreibung"></input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="land">Produkt-Land</label>
+					<div class="col-md-10">
+					 <select wicket:id="land"></select>
+					 </div>
+				</div>
+				<div class="form-group">
+					<label class="col-md-2" for="kommentar">Produkt-Kommentar</label>
+					<div class="col-md-10">
+					<textarea  wicket:id="kommentar"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<button class="btn btn-primary" type="submit"
+						wicket:id="speichernButton" data-role="button"
+						data-theme="b">Speichern</button>
+					<button class="btn btn-primary" type="submit"
+						wicket:id="abbrechenButton" data-role="button"
+						data-theme="b">Abbrechen</button>
+				</div>
+				
+			</form>
+	</wicket:extend>
+</body>
+</html>

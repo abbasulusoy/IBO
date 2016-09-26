@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+<body>
+	<wicket:extend>
+		<a href="#" wicket:id="newProduktLink">Neues Produkt anlegen</a>
+		<form wicket:id="produktForm">
+			<table>
+				<thead>
+					<tr>
+						<th><wicket:message key="produkt.nummer"></wicket:message></th>
+						<th><wicket:message key="produkt.name"></wicket:message></th>
+						<th><wicket:message key="produkt.art"></wicket:message></th>
+						<th><wicket:message key="produkt.beschreibung"></wicket:message></th>
+						<th><wicket:message key="produkt.land"></wicket:message></th>
+						<th><wicket:message key="produkt.kommentar"></wicket:message></th>
+						<th><wicket:message key="produkt.preis"></wicket:message></th>
+						<th><wicket:message key="common.edit"></wicket:message></th>
+						<th><wicket:message key="common.delete"></wicket:message></th>
+						
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="produkte">
+						<td wicket:id="nummer"></td>
+						<td wicket:id="name"></td>
+						<td wicket:id="art"></td>
+						<td wicket:id="beschreibung"></td>
+						<td wicket:id="land"></td>
+						<td wicket:id="kommentar"></td>
+						<td wicket:id="preis"></td>
+						<td><a href="#" wicket:id="edit"><wicket:message key="common.edit"></wicket:message></a> </td>
+						<td><a href="#" wicket:id="delete"><wicket:message key="common.delete"></wicket:message></a> </td>
+						
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</wicket:extend>
+</body>
+</html>

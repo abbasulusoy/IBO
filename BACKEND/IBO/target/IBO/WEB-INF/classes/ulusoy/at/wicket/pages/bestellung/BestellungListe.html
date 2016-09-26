@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+		<form wicket:id="bestellungForm">
+		<div class="table-responsive">
+			<table class="table table-condensed">
+		
+				<thead>
+					<tr>
+						
+						<th class="col-md-1"><wicket:message key="bestellung.id"></wicket:message></th>
+						<th class="col-md-2"><wicket:message key="bestellung.created"></wicket:message></th>
+						<th class="col-md-2"><wicket:message key="bestellung.kunde"></wicket:message></th>
+						<th class="col-md-2"><wicket:message key="bestellung.kunde.firma"></wicket:message></th>
+						
+						<th class="col-md-2"><wicket:message key="bestellung.summe"></wicket:message></th>
+						<th class="col-md-1"><wicket:message key="bestellung.steuer"></wicket:message></th>
+						<th class="col-md-1"><wicket:message key="bestellung.gesamt"></wicket:message></th>
+						<th class="col-md-1"><wicket:message key="common.edit"></wicket:message></th>
+						<th class="col-md-1"><wicket:message key="common.delete"></wicket:message></th>
+						
+
+					</tr>
+				</thead>
+				<tbody>
+					<tr wicket:id="bestellungen">
+						<td class="col-md-1" wicket:id="id"></td>
+						<td  class="col-md-2" wicket:id="created"></td>
+						<td class="col-md-2" wicket:id="kunde.fullname"></td>
+						<td  class="col-md-2" wicket:id="kunde.kundeFirmaname"></td>
+						
+						<td  class="col-md-2" wicket:id="total"></td>
+						<td  class="col-md-1" wicket:id="mehrwertSteuer10"></td>
+						<td  class="col-md-1" wicket:id="mehrwertSteuerTotal"></td>
+						 
+						<td class="col-md-1" ><a href="#" wicket:id="edit"><wicket:message key="common.edit"></wicket:message></a> </td>
+						<td class="col-md-1" ><a href="#" wicket:id="delete"><wicket:message key="common.delete"></wicket:message></a> </td>
+						
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			</form>
+	</wicket:extend>	
+	</body>
+</html>

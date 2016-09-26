@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+<body>
+	<wicket:panel>
+		
+			<div class="container">
+				<a href="#" class="navbar-brand">IBO</a>
+
+				<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="collapse navbar-collapse navHeaderCollapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="#"><span class="glyphicon glyphicon-search"></span> Home</a>
+						<li><a wicket:id="kundenLink" rel="external" data-ajax="false">KUNDEN</a></li>
+						<li><a wicket:id="bestellungLink" rel="external" data-ajax="false">BESTELLEN</a></li>
+						<li><a wicket:id="produktLink" rel="external" data-ajax="false">PRODUKTE</a></li>
+						<li><a wicket:id="anmeldenLink" rel="external"  data-ajax="false">ANMELDEN</a></li>
+					</ul>
+				</div>
+			</div>
+		
+	</wicket:panel>
+
+
+</body>
+</html>

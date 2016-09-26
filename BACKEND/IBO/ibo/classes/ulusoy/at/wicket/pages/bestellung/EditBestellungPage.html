@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:wicket="http://wicket.apache.org">
+
+	<body>
+	<wicket:extend>
+	 <legend><wicket:message key="legend.bestellung.formular"></wicket:message></legend>
+	 <section wicket:id="feeddbackPanel"></section>
+	<form wicket:id="bestellungForm">
+	<label class="col-md-4 control-label">Nr</label>
+	<input  class="col-md-4" type="text" wicket:id="id"></input>
+	
+	<label class="col-md-4 control-label">Steuer</label>
+	<span wicket:id="mehrwertSteuer"></span>
+	
+	<label class="col-md-4 control-label">Kunde</label>
+	<select type="text"  wicket:id="kundenAuswahl"></select>
+	
+	<input  class="col-md-4" type="submit" wicket:id="bestellen"  value="bestellung beginnen">
+	<input  class="col-md-4" type="submit" wicket:id="bestellenAendern" value="bestellung ändern">
+
+		
+	</form>
+	<hr/>
+	<span wicket:id="artikelAdded"></span>
+	
+	
+	<hr/>
+	<span wicket:id="warenkorb"></span> 
+	<a href="" wicket:id="downloadLink" rel="external"  data-ajax="false" data-role="button" data-theme="b">Download</a>
+	
+	
+	</wicket:extend>	
+	</body>
+</html>
